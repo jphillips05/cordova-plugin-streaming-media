@@ -48,7 +48,13 @@ MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener {
 		relLayout.setBackgroundColor(Color.BLACK);
 		RelativeLayout.LayoutParams relLayoutParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
 		relLayoutParam.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+		
 		mVideoView = new VideoView(this);
+		
+		Bitmap thumb = ThumbnailUtils.createVideoThumbnail(mVideoUrl, MediaStore.Images.Thumbnails.MINI_KIND);
+		BitmapDrawable bitmapDrawable = new BitmapDrawable(thumb);
+		mVideoView.setBackground(bitmapDrawable);
+
 		mVideoView.setLayoutParams(relLayoutParam);
 		relLayout.addView(mVideoView);
 

@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
+import android.media.ThumbnailUtils;
+import android.provider.MediaStore;
 import android.widget.MediaController;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -20,6 +23,9 @@ import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.VideoView;
+
+import android.graphics.Bitmap;
+
 
 public class SimpleVideoStream extends Activity implements
 MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener,
@@ -48,9 +54,9 @@ MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener {
 		relLayout.setBackgroundColor(Color.BLACK);
 		RelativeLayout.LayoutParams relLayoutParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
 		relLayoutParam.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-		
+
 		mVideoView = new VideoView(this);
-		
+
 		Bitmap thumb = ThumbnailUtils.createVideoThumbnail(mVideoUrl, MediaStore.Images.Thumbnails.MINI_KIND);
 		BitmapDrawable bitmapDrawable = new BitmapDrawable(thumb);
 		mVideoView.setBackground(bitmapDrawable);
